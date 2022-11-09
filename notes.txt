@@ -1,0 +1,6 @@
+install docker (debian based systems):
+sudo apt install docker*
+
+run docker compose to update/create/run database:
+sudo docker-compose up -d
+

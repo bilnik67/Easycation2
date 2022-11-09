@@ -8,7 +8,7 @@ services:
       POSTGRES_PASSWORD: root
       POSTGRES_DB: EasyCation_DB
     ports:
-      - "5432:5432"
+      - "5555:5555"
     volumes:
       - ./postgres:/docker-entrypoint-initdb.d/
   pgadmin:
