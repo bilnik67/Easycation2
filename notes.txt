@@ -4,3 +4,15 @@ sudo apt install docker*
 run docker compose to update/create/run database:
 sudo docker-compose up -d
 
+reset docker db:
+sudo docker-compose down
+sudo docker-compose up -d
+
+in pgAdmin:
+    login: admin@admin.com, pw: root
+    connections:
+        Hostname/address:
+            port: (right side of ports in yaml, so 5432)
+            hostname: db
+            user: root
+            pw: root
