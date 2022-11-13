@@ -1,4 +1,4 @@
-package Globals
+package backend
 
 import (
 	"database/sql"

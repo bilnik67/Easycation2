@@ -1,10 +1,11 @@
-package main
+package backend
 
 import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"time"
 )
 
 var BookDownloader = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -13,19 +14,20 @@ var BookDownloader = http.HandlerFunc(func(w http.ResponseWriter, r *http.Reques
 })
 
 type userInputRegister struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
-	Email    string `json:"email"`
-	Region   string `json:"region"`
-	Country  string `json:"country"`
+	Username         string    `json:"username"`
+	Password         string    `json:"password"`
+	Email            string    `json:"email"`
+	Region           string    `json:"region"`
+	Country          string    `json:"country"`
+	RegisterDateTime time.Time `json:"datetime,omitempty"`
 }
 
 type userInputLogin struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
+	Username      string    `json:"username"`
+	Password      string    `json:"password"`
+	LoginDateTime time.Time `json:"datetime,omitempty"`
 }
 
-// username
 var RegisterHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 	v := &userInputRegister{}
 
@@ -40,13 +42,10 @@ var RegisterHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Reque
 		fmt.Fprint(w, err)
 	}
 
-	//username := v.Username
-	//password, _ := bcrypt.GenerateFromPassword([]byte(v.Password), 10)
-	//mail := v.Email
-	//region := v.Region
-	//country := v.Country
-	//AccountCreationDateTime := time.Now().UTC()
-	//Globals.DB.Exec( /*SQL*/ )
+	err = RegisterUser(DB, *v)
+	if err != nil {
+		return
+	}
 })
 
 var LoginHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -65,8 +64,8 @@ var LoginHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request)
 		return
 	}
 
-	//username := v.Username
-	//password, _ := bcrypt.GenerateFromPassword([]byte(v.Password), 10)
-	//LoginDateTime := time.Now().UTC()
-	//Globals.DB.Exec( /*SQL*/ )
+	err = LoginUser(DB, *v)
+	if err != nil {
+		return
+	}
 })

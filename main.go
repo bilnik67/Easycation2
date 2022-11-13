@@ -1,11 +1,11 @@
 package main
 
 import (
-	"awesomeProject1/Globals"
+	"awesomeProject1/backend"
 	_ "github.com/lib/pq"
 )
 
 func main() {
-	HandleRequests()
-	Globals.InitializeDB()
+	backend.HandleRequests()
+	backend.InitializeDB()
 }
