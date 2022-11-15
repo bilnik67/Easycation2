@@ -3,6 +3,7 @@ package backend
 import (
 	"encoding/json"
 	"fmt"
+	_ "github.com/gorilla/securecookie"
 	"io/ioutil"
 	"net/http"
 	"time"
