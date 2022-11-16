@@ -20,7 +20,7 @@ func RegisterUser(db *sql.DB, register userInputRegister) (err error, result sql
 }
 
 func LoginUser(db *sql.DB, login userInputLogin) (err error, result sql.Result) {
-	result, err = db.Exec("FROM accounts GET * WHERE Email ==" + register.Email + "AND WHERE PASSWORD ==" + login.Password)
+	result, err = db.Exec("FROM accounts GET * WHERE Username ==" + login.Username + "AND WHERE PASSWORD ==" + login.Password)
 	if err != nil {
 		return err, result
 	}

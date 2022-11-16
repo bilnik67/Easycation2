@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
-      POSTGRES_DB: EasyCation_DB
+      POSTGRES_DB: EasyCation
     ports:
       - "5555:5432"
     volumes:

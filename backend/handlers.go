@@ -43,7 +43,7 @@ var RegisterHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Reque
 		fmt.Fprint(w, err)
 	}
 
-	err = RegisterUser(DB, *v)
+	err, _ = RegisterUser(DB, *v)
 	if err != nil {
 		return
 	}
@@ -65,7 +65,7 @@ var LoginHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request)
 		return
 	}
 
-	err = LoginUser(DB, *v)
+	err, _ = LoginUser(DB, *v)
 	if err != nil {
 		return
 	}
