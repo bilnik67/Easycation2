@@ -1,10 +1,11 @@
 * {
+    font-family: 'Bahnschrift', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
    }
    body {
-    font-family: cursive;
+    font-family: 'Bahnschrift', sans-serif;
    }
    a {
     text-decoration: none;
@@ -31,21 +32,39 @@ body, html {
       outline: 0;
     border-radius: 0
   }
+  .btnsignup{
+    padding: 15px 40px ;
+    border:2px solid #ffffff ;;
+    border-radius: 20px;
+    width: 100%;
+    height: 20%;
+    
   
+    font-family: 'Bahnschrift', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color:#06e49f;
+    
+    -webkit-transition: all .6s;
+    -moz-transition: all .6s;
+    transition: all .6s;
+    cursor: pointer;
+  }
   
   
   .btn-larger {
       padding: 15px 40px ;
-      border:2px solid #ffffff ;;
+      border: 2px solid #06e49f;
       border-radius: 20px;
       width: 100%;
       height: 20%;
+      background-color: #06e49f;
       
-      text-transform: uppercase;
-      font-family: 'Dosis', sans-serif;
-      font-size: 18px;
-      font-weight: 300;
-      color: #000000;
+      
+      font-family: 'Bahnschrift', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: #ffffff;
       
       -webkit-transition: all .6s;
       -moz-transition: all .6s;
@@ -54,21 +73,30 @@ body, html {
     
   
   }
-  .btn-larger:hover, .btn-larger:focus, .btn-larger:active, .btn-larger.active, .open .dropdown-toggle.btn-larger {
+  .btn-larger:hover, .btn-larger:focus, .btn-larger:active,
+   .btn-larger.active, .open .dropdown-toggle.btn-larger{
       border-color: #ffffff;
       
-      color: rgb(0, 0, 0);
-      background-color: #ffffff;
+      color: rgb(255, 255, 255);
+      background-color:#06e49f;
       border-radius: 8px;
   }
-  .btn-larger:active, .btn-larger.active, .open .dropdown-toggle.btn-larger {
+  .btnsignup:hover, .btnsignup:focus, .btnsignup:active,
+   .btnsignup.active, .dropdown-toggle.btnsignup {
+    border-color:#06e49f;
+      
+      color:#06e49f;
+      background-color: #ffffff;
+      border-radius: 8px;
+   }
+  .btn-larger:active, .btn-larger.active, .btnsignup:active, .btnsignup.active, .open .dropdown-toggle.btn-larger {
       background-image: none;
   }
   .btn-larger.disabled, .btn-larger[disabled], fieldset[disabled] .btn-larger, .btn-larger.disabled:hover, .btn-larger[disabled]:hover, fieldset[disabled] .btn-larger:hover, .btn-larger.disabled:focus, .btn-larger[disabled]:focus, fieldset[disabled] .btn-larger:focus, .btn-larger.disabled:active, .btn-larger[disabled]:active, fieldset[disabled] .btn-larger:active, .btn-larger.disabled.active, .btn-larger[disabled].active, fieldset[disabled] .btn-larger.active {
       border-color: #AEA8D3;
       background-color: #AEA8D3;
   }
-  .btn-larger .badge {
+  .btn-larger .btnsignup .badge {
       color: #AEA8D3;
       background-color: #fff;
   }
@@ -195,7 +223,9 @@ body, html {
     display: inline-block;
    }
    .logintext{
-    font-weight: bolder;
+    font-weight: 800;
+    
+    font-size: x-large;
     margin-bottom: 15px;
    }
    .login-form{
@@ -204,7 +234,7 @@ body, html {
     background: #3366ff;
     border-radius: 8px;
     width: 250%;
-    height: 125%;
+    height: 100%;
     padding: 40%; 
     text-align: center;
     justify-content: center;
@@ -226,44 +256,34 @@ body, html {
     border-radius: 5px;
   }
   .form-group input[type="text"],
+  .form-group input[type="email"],
   .form-group input[type="password"]{
       margin-top: 5px;
       display: block;
       width: 250%;
-      padding: 10px;
+      padding: 12px;
       outline: none;
   }
-  .form-group input[type="text"]:active,
-  .form-group input[type="text"]:valid,
-  .form-group input[type="text"]:focus,
-  .form-group input[type="text"]:hover,
-  .form-group input[type="password"]:active,
-  .form-group input[type="password"]:valid,
-  .form-group input[type="password"]:focus,
-  .form-group input[type="password"]:hover{
-    border:  solid #06e49f;
-    transition: 0.5s;
-    color: #000000;
-
-    
-  }
+  
   .background{
     position: absolute;
     width: 100%;
-    height: 100%;
+   height:inherit;
     background-color: rgba(0,0,0,0.3)
   }
   .text-divider{
     margin-top: 15px;
+    color: #06e49f;
     margin-bottom: 15px;
     display: flex;
     align-items: center;
+    --text-divider-gap: 0.5rem;
   }
-  .text-divider::before,
+.text-divider::before,
 .text-divider::after {
   content: '';
   height: 1px;
-  background-color: silver;
+  background-color:#06e49f;
   flex-grow: 1; 
 }
 .text-divider::before {
@@ -272,4 +292,83 @@ body, html {
 
 .text-divider::after {
   margin-left: var(--text-divider-gap);
+}
+.passwordforgot {
+  font-size: large;
+  color:#06e49f;
+  font-weight: bold;
+  width: 50%;
+  position: relative;
+  display: flex;
+  cursor: pointer;
+}
+.passwordforgot:hover,
+.passwordforgot:active{
+  
+  text-decoration:underline;
+}
+.exit{
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  font-size: large;
+  background-color: #06e49f;
+  color: #fff;
+  border: none;
+  text-align: left;
+  
+  padding: 5px 10.5px;
+  border-radius: 100px;
+  margin-top: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  font-size: large;
+  background-color: #06e49f;
+  color: #fff;
+  border: none;
+  text-align: left;
+  
+  padding: 5px 7px;
+  border-radius: 100px;
+  margin-top: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+#email {
+  border: 2px solid;
+}
+.invalidm {
+  display: none;
+  position: relative;
+
+  background: #e74c3c;
+  color: #fceae8;
+  font-size: 18px;
+  padding: 8px;
+  border-radius: 5px;
+  justify-content: left;
+  
+}
+.invalidm:before{
+  position: absolute;
+  content: '';
+  height: 15px;
+  width: 15px;
+  background: #e74c3c;
+  right: 20px;
+  top: -7px;
+  transform: rotate(45deg);
+}
+#border {
+  border: 2px solid;
+}
+#password {
+  border: 2px solid;
 }

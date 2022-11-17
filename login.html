@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.6.1.js" 
+  integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" 
+  crossorigin="anonymous"></script>
+</head>
+  <body>  
+        <div class="background">
+          <div class="center" >
+            <div id="form">   
+              
+              <div class="col-md-6 login-form" id="loginbtn" >   
+                <h2 class="logintext">Log in</h2>
+                <div class="inputsize">
+                  <div class="form-group">
+                  <input onkeydown="Check()" onkeyup="Check()" type="email" required class="form-control" placeholder="Email" id="email" data-validation-required-message="Please enter your email address." autocomplete="off">
+                  </div>
+                  <label class="invalidm" id="labell" > Enter a valid Email!</label>
+                  <div class="form-group">
+                  <input type="password" id="border" class="form-control" placeholder="Password" value="" id="password" required data-validation-required-message="Please enter your password" autocomplete="off">
+                  </div>
+                </div>
+                
+                <div>
+                  <a href="index.html">
+                  <button class="exit">X</button>
+                  </a>
+                </div>
+
+                <p ><a class ="passwordforgot" href="Forgotpassword.html">Forgot password?</a> </p>
+                
+                  
+                <div class="mrgn-20-top">
+                  <button disabled="true" id="button" type="submit" class="btnlogin btn-larger btn-block" onclick="onlogin()">
+                  Log In
+                  </button>
+                  </div>
+                  <div class="text-divider"> or </div>
+                  <div class="mrgn-20-top">
+                    <a href="signup.html">
+                    <button href="signup.html" type="submit" class="btn btnsignup btn-block">
+                    Sign Up
+                    </button>
+                  </a>
+                    </div>
+                <div class="margin">   
+                </div>
+                
+              </div>
+            </div>
+          </div>
+      </div> 
+      <nav class="navbar" id="navbar">
+        <a href="index.html">
+        <img class="logo" src="https://media.discordapp.net/attachments/1037658643539173476/1039479244226580520/EasyCation_LONG_PNG_VERSION.png">
+        </a>
+        <ul class="nav-links">
+          <div class="menu">
+            <li><a href="index.html">Home</a></li>
+            
+            <li><a class="current" href="/">Leerstof</a>
+              <ul class="dropdown">
+                <li><a href="/">Wiskunde</a></li>
+                <li><a href="/">Taal</a></li>
+                <li><a href="/">Geografie</a></li>
+                <li><a href="/">Landbouw</a></li>
+              </ul>
+            </li>
+          </div>
+        </ul>
+      </nav>    
+      <h1 style="color: white;">INTRODUCTION PAGE</h1>
+      
+      <script>
+        const emaill = document.querySelector("#email");
+        const buttonn = document.querySelector("#button");
+        const labell = document.querySelector("#labell");
+
+        let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+        function Check() {
+          
+            if(emaill.value.match(regExp)) {
+                emaill.style.borderColor  = "green";
+                buttonn.disabled = false;
+                labell.style.display = 'none';
+            }else {
+                emaill.style.borderColor  = "red";
+                buttonn.disabled = true;
+                labell.style.display = 'flex';
+                
+            } 
+        }
+          function onlogin(){
+         
+          
+
+          var email = $('#email').val();
+          var password = $('#password').val();
+
+          jsonObject={
+            "Email":"",
+            "Password":""
+          }
+          jsonObject.Email=email;
+          jsonObject.Password=password;
+
+          var string=JSON.stringify(jsonObject);
+          document.write(string);
+        }
+          
+        </script>
+    </body>
+</html>
