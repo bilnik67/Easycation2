@@ -1,6 +1,8 @@
 package backend
 
 import (
+	"crypto/sha512"
+	_ "crypto/sha512"
 	"database/sql"
 	"fmt"
 	"github.com/gorilla/securecookie"
@@ -9,25 +11,23 @@ import (
 
 var DB *sql.DB
 
-func InitializeDB() {
-	psqlconn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", "db", 5555, "root", "root", "EasyCation_DB")
+func InitializeDB() (err error) {
+	psqlconn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", "localhost", 5555, "root", "root", "EasyCation")
 
 	db, err := sql.Open("postgres", psqlconn)
-	CheckError(err)
+	if err != nil {
+		return err
+	}
 
-	// check db
 	err = db.Ping()
-	CheckError(err)
+	if err != nil {
+		return err
+	}
 
 	fmt.Println("Connected!")
 
 	DB = db
-}
-
-func CheckError(err error) {
-	if err != nil {
-		panic(err)
-	}
+	return
 }
 
 var s = securecookie.New(securecookie.GenerateRandomKey(50), securecookie.GenerateRandomKey(32))
@@ -58,4 +58,14 @@ func ReadAccountCookie(w http.ResponseWriter, r *http.Request) string {
 		}
 	}
 	return ""
+}
+
+func hash(input string) (int, error) {
+	sha512 := sha512.New()
+	// sha from a byte array
+	output, err := sha512.Write([]byte(input))
+	if err != nil {
+		return output, err
+	}
+	return output, err
 }

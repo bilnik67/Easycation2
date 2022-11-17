@@ -2,36 +2,31 @@ package backend
 
 import (
 	"database/sql"
+	"strconv"
 	"time"
 )
 
 func RegisterUser(db *sql.DB, register userInputRegister) (err error, result sql.Result) {
-	rows, err := db.Query(`SELECT "klant_id" FROM "gebruiker" WHERE email=$1`, register.Email)
+	rows, err := db.Query(`SELECT "klant_id" FROM "gebruiker" WHERE email=$1 OR gebruikersnaam=$2`, register.Email, register.Username)
 	if err != nil {
 		return err, result
 	}
-	if rows != nil {
+
+	defer rows.Close()
+	//TODO add salt
+	if rows.Next() {
 		return err, result
 	}
-
-	rows, err = db.Query(`SELECT "klant_id" FROM "gebruiker" WHERE gebruikersnaam=$1`, register.Username)
+	hashedPassword, err := hash(register.Password)
 	if err != nil {
-		return err, result
+		return
 	}
-	if rows != nil {
-		return err, result
-	}
+	result, err = db.Exec(`insert into "gebruiker"("gebruikersnaam","wachtwoord","email","created_on", "last_login") values($1, $2, $3, $4, $5)`, register.Username, strconv.Itoa(hashedPassword), register.Email, time.Now().UTC(), time.Now().UTC())
 
-	result2 := result
-	err2 := err
-	result2, err2 = db.Exec(`insert into "gebruiker"("gebruikersnaam","wachtwoord","email","created_on", "last_login") values($1, $2, $3, $4, $5)`, register.Username, register.Password, register.Email, time.Now().UTC(), time.Now().UTC())
-	if err2 != nil {
-		return err2, result2
-	}
-	//sql code goes here
-	return err, result2
+	return err, result
 }
 
+// TODO fix login
 func LoginUser(db *sql.DB, login userInputLogin) (err error, result sql.Result) {
 	//result, err = db.Query('SELECT "username","demoname","demonumber","running" FROM "gebruiker" WHERE username=$1 AND demoname=$2 AND demonumber=$3')
 	if err != nil {
@@ -39,3 +34,6 @@ func LoginUser(db *sql.DB, login userInputLogin) (err error, result sql.Result) 
 	}
 	return err, result
 }
+
+//TODO fix login through JS
+//TODO fix register through JS

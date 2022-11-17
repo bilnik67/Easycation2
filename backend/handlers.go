@@ -45,7 +45,7 @@ var RegisterHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Reque
 
 	err, _ = RegisterUser(DB, *v)
 	if err != nil {
-		return
+
 	}
 })
 
