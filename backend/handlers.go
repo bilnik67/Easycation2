@@ -6,6 +6,7 @@ import (
 	_ "github.com/gorilla/securecookie"
 	"io/ioutil"
 	"net/http"
+	"strconv"
 	"time"
 )
 
@@ -35,12 +36,18 @@ var RegisterHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Reque
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
-		fmt.Fprint(w, err)
+		_, err := fmt.Fprint(w, err)
+		if err != nil {
+			return
+		}
 	}
 	err = json.Unmarshal(body, v)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
-		fmt.Fprint(w, err)
+		_, err := fmt.Fprint(w, err)
+		if err != nil {
+			return
+		}
 	}
 
 	err, _ = RegisterUser(DB, *v)
@@ -55,17 +62,46 @@ var LoginHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request)
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
-		fmt.Fprint(w, err)
+		_, err := fmt.Fprint(w, err)
+		if err != nil {
+			return
+		}
 		return
 	}
 	err = json.Unmarshal(body, v)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
-		fmt.Fprint(w, err)
+		_, err := fmt.Fprint(w, err)
+		if err != nil {
+			return
+		}
+		return
+	}
+	var klantId int
+	err, klantId = LoginUser(DB, *v)
+	if err != nil {
 		return
 	}
 
-	err, _ = LoginUser(DB, *v)
+	SetAccountCookie(w, strconv.Itoa(klantId))
+})
+
+type Response struct {
+	AccountId string
+}
+
+var CheckLoginHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
+	response := Response{AccountId: ReadAccountCookie(r)}
+	res, err := json.Marshal(response)
+	if err != nil {
+		_, err := fmt.Fprint(w, err)
+		if err != nil {
+			return
+		}
+		return
+	}
+	_, err = fmt.Fprint(w, res)
 	if err != nil {
 		return
 	}

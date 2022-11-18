@@ -50,7 +50,7 @@ func SetAccountCookie(w http.ResponseWriter, inputValue string) {
 	}
 }
 
-func ReadAccountCookie(w http.ResponseWriter, r *http.Request) string {
+func ReadAccountCookie(r *http.Request) string {
 	if cookie, err := r.Cookie("cookie"); err == nil {
 		value := make(map[string]string)
 		if err = s.Decode("cookie", cookie.Value, &value); err == nil {
@@ -61,9 +61,9 @@ func ReadAccountCookie(w http.ResponseWriter, r *http.Request) string {
 }
 
 func hash(input string) (int, error) {
-	sha512 := sha512.New()
+	h := sha512.New()
 	// sha from a byte array
-	output, err := sha512.Write([]byte(input))
+	output, err := h.Write([]byte(input))
 	if err != nil {
 		return output, err
 	}

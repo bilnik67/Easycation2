@@ -17,6 +17,8 @@ func HandleRequests() (err error) {
 
 	router.Handle("/login", LoginHandler).Methods("GET")
 
+	router.Handle("/CheckLogin", CheckLoginHandler).Methods("GET")
+
 	err = http.ListenAndServe(":"+strconv.Itoa(8000), router)
 	return
 }

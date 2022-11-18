@@ -27,12 +27,24 @@ func RegisterUser(db *sql.DB, register userInputRegister) (err error, result sql
 }
 
 // TODO fix login
-func LoginUser(db *sql.DB, login userInputLogin) (err error, result sql.Result) {
-	//result, err = db.Query('SELECT "username","demoname","demonumber","running" FROM "gebruiker" WHERE username=$1 AND demoname=$2 AND demonumber=$3')
+func LoginUser(db *sql.DB, login userInputLogin) (err error, klantId int) {
+	hashedPassword, err := hash(login.Password)
 	if err != nil {
-		return err, result
+		return
 	}
-	return err, result
+	rows, err := db.Query(`SELECT "klant_id" FROM "gebruiker" WHERE gebruikersnaam=$1 AND wachtwoord=$2`, login.Username, hashedPassword)
+	if err != nil {
+		return
+	}
+
+	for rows.Next() {
+		err := rows.Scan(&klantId)
+		if err != nil {
+			return
+		}
+	}
+
+	return
 }
 
 //TODO fix login through JS
