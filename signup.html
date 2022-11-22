@@ -77,7 +77,18 @@
     </div>
   </ul>
 </nav>
-<h1 style="color: white;">INTRODUCTION PAGE</h1>
+<div id="form">                 
+  <div class="col-md-6 introduction-form"  > 
+    <div class="marginbottom10">    
+  <h1 style="color: white;">Easycation</h1>
+    </div>
+  <blockquote style="color:black">“Education made easy.”</blockquote>
+  </div>
+  <div class="col-md-6 introduction-form"  >
+    <h1 style="color: white;">Easycation</h1>
+    <h2>test: <span class="testInput"></span></h2>
+  </div>
+</div>
 <script>
   const emaill = document.querySelector("#email");
   const buttonn = document.querySelector("#button");
@@ -125,10 +136,11 @@
       "email":"",
       "password":""
     }
-    jsonObject.username=Username;
-    jsonObject.name=Name;
-    jsonObject.email=Email;
-    jsonObject.password=Password;
+    
+    jsonObject.username = Username;
+    jsonObject.name = Name;
+    jsonObject.email = Email;
+    jsonObject.password = Password;
 
     var str=JSON.stringify(jsonObject);
     document.write(str);

@@ -36,9 +36,9 @@ func LoginUser(db *sql.DB, login userInputLogin) (err error, klantId int) {
 	if err != nil {
 		return
 	}
-
+	
 	for rows.Next() {
-		err := rows.Scan(&klantId)
+		err = rows.Scan(&klantId)
 		if err != nil {
 			return
 		}

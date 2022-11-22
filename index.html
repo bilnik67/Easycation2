@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Login</title>
   <link rel="stylesheet" href="style.css">
+  <link href="video-js.min.css" rel="stylesheet">
+  <script src="video.min.js"></script>
 </head>
   <body>  
       
@@ -30,8 +32,41 @@
            
           </div>
         </ul>
-      </nav>    
-      <h1 style="color: white;">INTRODUCTION PAGE</h1>
+      </nav>
+    <div class="banner"> 
+      <video class="video-js vjs-default-skin" width="1280" height="720%" controls data-setup='{}'>
+        <source src="introduction.mp4" type='video/mp4'>
+      </video>
+    </div>
+    <div id="form">                 
+      <div class="col-md-6 introduction-form"  > 
         
-    </body>
+          <div class="marginbottom10">    
+      
+        </div>
+        <div class="flex">
+      <blockquote class="fontsize" style="color:black"> Education made </blockquote>
+      <blockquote class="fontsizetype" ><span class="testInput"></span></blockquote>
+        </div>
+    </div>
+      <div class="col-md-6 introduction-form"  >
+        <h1 style="color: white;">Easycation</h1>
+        
+      </div>
+    </div>
+    <script src="typed.js"></script>
+    <script src="video.js"></script>
+  <script>
+    var typed = new Typed(".testInput", {
+      strings: [
+        " easy!",
+        " understandable!",
+        
+      ],
+      typeSpeed: 60,
+      backSpeed: 60,
+      loop: true
+    });
+  </script>
+  </body>
 </html>

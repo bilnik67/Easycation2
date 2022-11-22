@@ -372,3 +372,39 @@ body, html {
 #password {
   border: 2px solid;
 }
+.introduction-form{
+  display:flexbox;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.5), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+  background: #06e49f;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 8px;
+  width: 98%;
+  height: 100%;
+  padding: 125px;
+  align-items: center;
+  text-align: center;
+ 
+
+}
+.marginbottom10 {
+  margin-bottom: 10px;
+}
+.flex{
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+}
+.fontsize{
+  font-size:x-large;
+  font-weight: bolder;
+}
+.fontsizetype{
+  font-size: x-large;
+  font-weight: bolder;
+  color:#3366ff;
+}
+.banner{
+  display: flex;
+  justify-content: center ;
+}
