@@ -134,9 +134,15 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
     background-color: #FFFDFA;
     color: #fff;
+    padding: 20px;
+    z-index: 4;
+    position: fixed;
+
+    top: 0;
+    width: 100%;
+    
    }
    .nav-links a {
     color: #06e49f;
@@ -373,22 +379,77 @@ body, html {
   border: 2px solid;
 }
 .introduction-form{
-  display:flexbox;
+  display: inline-flexbox;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.5), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
   background: #06e49f;
-  margin: auto;
-  margin-top: 10px;
+  margin-left: auto;
+  margin-right: 15px;
+  margin-top: 14px;
+  margin-bottom: 20px;
   border-radius: 8px;
-  width: 98%;
+  width: 49%;
   height: 100%;
-  padding: 125px;
-  align-items: center;
+  
+  padding: 4.5%;
+  align-items:center;
   text-align: center;
+  
+  
+  
+  
  
 
 }
-.marginbottom10 {
-  margin-bottom: 10px;
+.introduction2-form{
+  display: flexbox;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.5), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+  background: #3366ff;
+  margin-left: 15px;
+  margin-right: auto;
+  margin-top: 14px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  width: 48.5%;
+  height: 600px;
+  padding: 5.5%;
+  align-items:center;
+  text-align: center;
+ 
+  
+  
+ 
+
+}
+.introduction3-form{
+  display: flexbox;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.5), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+  background: #06e49f;
+  margin-left: auto;
+  margin-right: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  width: 49%;
+  height: 100%;
+  padding: 4.5%;
+  align-items:center;
+  text-align: center;
+  transform: translate(0px, -308px);
+}
+.large{
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.larger{
+  color: #000;
+  margin-bottom: 20px;
+  font-size: xx-large;
+}
+.flexx{
+  display: flex;
+}
+.marginbottom20 {
+  margin-bottom: 20px;
 }
 .flex{
   display: flex;
@@ -396,15 +457,36 @@ body, html {
   justify-content: center;
 }
 .fontsize{
-  font-size:x-large;
+  font-size:xx-large;
   font-weight: bolder;
+  transform: translate(0, -40px);
 }
 .fontsizetype{
-  font-size: x-large;
+  font-size: xx-large;
   font-weight: bolder;
   color:#3366ff;
+  transform: translate(0, -40px);
 }
+
 .banner{
+  margin-top: 94px;
   display: flex;
   justify-content: center ;
+}
+.videolayout{
+  background: #333;
+  padding: 9px;
+  border: 12px groove #06e49f;
+}
+.resize{
+  width: 30%;
+  height: 30%;
+  background-color: #fff;
+  border: 6px solid white;
+  border-radius: 6px;
+  text-size-adjust: none;
+  transform: translate(0,-70px);
+}
+.marginbottom20{
+  margin-bottom: 20px;
 }
